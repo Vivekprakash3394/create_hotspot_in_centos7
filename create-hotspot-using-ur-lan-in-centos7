@@ -1,0 +1,27 @@
+Create a Wi-Fi hotspot that shares the internet connection from the ethernet cable. That’s it.
+
+What will we need ?
+I stumbled accros create_ap a few weeks ago. It’s simple, easy to use and it WORKS magi-perfectly. It has a lot of little hacks that addresses some of known issues with some adapters and wifi modes.
+
+Steps
+1. Install required packages and create_ap
+
+sudo yum install haveged iw hostapd
+sudo cd /var/opt ; sudo git clone https://github.com/oblique/create_ap
+sudo cd create_ap ; sudo make install
+ 
+sudo yum install haveged iw hostapd
+sudo cd /var/opt ; sudo git clone https://github.com/oblique/create_ap
+sudo cd create_ap ; sudo make install
+2. Get your network cards information and test
+Since CentOS 7 uses a different naming convention for the network cards, find the label of your card by typing
+
+
+ip a
+
+Once you get them, test create_ap :
+
+
+create_ap wlp3s0 enp2s0 MyAccessPoint MyPassPhrase
+
+all done ur wifi name is MyAccessPoint and ur wifi password is MyPassPhrase
